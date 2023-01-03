@@ -1,0 +1,19 @@
+#docker-compose.yml (Base)
+version: "3.8"
+services:
+  ubuntu_resizer:
+    build:
+      context: ./code
+    container_name: ubuntu-resizer
+    volumes:
+      - ./images:/images
+      - ./code/scripts:/scripts
+    working_dir: /scripts
+    command: 
+      - sh
+      - -c
+      - |
+        ./resize.sh
+        ./resizeMb.sh
+    # tty: true # if you want contaner to be up and debug
+    
